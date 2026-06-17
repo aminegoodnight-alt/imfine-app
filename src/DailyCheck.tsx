@@ -416,10 +416,6 @@ export default function DailyCheck() {
   const [notification, setNotification] = useState<string | null>(null);
   const [oneSignalInitialized, setOneSignalInitialized] = useState(false);
 
-  // ===== LOCATION SHARING =====
-  const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [shareLocation, setShareLocation] = useState(false);
-
   // Destructure userData for convenience
   const { contacts, schedule, isPremium, lastCheckIn, language, notificationsEnabled } = userData;
 
@@ -526,38 +522,6 @@ export default function DailyCheck() {
     }
   };
 
-  // ===== LOCATION SHARING FUNCTIONS =====
-  const getLocation = useCallback(() => {
-    if (!isPremium) {
-      showNotification('🔒 Location sharing is only for Premium users');
-      return;
-    }
-    if (!navigator.geolocation) {
-      showNotification('⚠️ Geolocation not supported');
-      return;
-    }
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setUserLocation({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude
-        });
-        showNotification('📍 Location acquired');
-      },
-      () => {
-        setUserLocation(null);
-        showNotification('⚠️ Could not get location');
-      }
-    );
-  }, [isPremium]);
-
-  const getLocationText = useCallback(() => {
-    if (!isPremium || !shareLocation || !userLocation) {
-      return "Location unknown. Please contact the user directly.";
-    }
-    return `📍 Last known location: https://maps.google.com/?q=${userLocation.lat},${userLocation.lng}`;
-  }, [isPremium, shareLocation, userLocation]);
-
   // Show browser notification
   const showBrowserNotification = useCallback((title: string, body: string) => {
     if ('Notification' in window && Notification.permission === 'granted') {
@@ -569,20 +533,14 @@ export default function DailyCheck() {
     const now = new Date().toISOString();
     updateUserData({ lastCheckIn: now });
 
-    // إرسال الموقع مع التنبيه إذا كان المستخدم مشتركاً
-    if (isPremium && shareLocation) {
-      getLocation();
-    }
-
     if (contacts.length > 0) {
-      const locationText = getLocationText();
       showNotification(t.checkInSent);
-      showBrowserNotification(t.appName, t.checkInSent + ' ' + locationText);
+      showBrowserNotification(t.appName, t.checkInSent);
 
       // In production, this would trigger push notifications to contacts via OneSignal
       if (isOnline) {
+        // Simulate sending to contacts
         console.log('Sending check-in notification to contacts:', contacts);
-        console.log('Location:', locationText);
       }
     } else {
       showNotification('Check-in recorded! Add contacts for notifications.');
@@ -1101,42 +1059,6 @@ export default function DailyCheck() {
             {t.sportsTracker}
           </h2>
 
-          {/* Location Sharing Toggle */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, marginBottom: 16 }}>
-            <span style={{ fontSize: 13, color: '#374151' }}>📍 Share location on emergency</span>
-            <div 
-              onClick={() => {
-                if (isPremium) {
-                  setShareLocation(!shareLocation);
-                  if (!shareLocation) getLocation();
-                } else {
-                  showNotification('🔒 Premium feature only');
-                }
-              }}
-              style={{ 
-                width: 46, 
-                height: 26, 
-                borderRadius: 13, 
-                background: (isPremium && shareLocation) ? '#ea580c' : '#d1d5db', 
-                cursor: isPremium ? 'pointer' : 'not-allowed',
-                position: 'relative', 
-                transition: 'background 0.2s' 
-              }}
-            >
-              <div style={{ 
-                position: 'absolute', 
-                top: 3, 
-                left: (isPremium && shareLocation) ? 22 : 3, 
-                width: 20, 
-                height: 20, 
-                borderRadius: '50%', 
-                background: 'white', 
-                transition: 'left 0.2s' 
-              }} />
-            </div>
-            {!isPremium && <span style={{ fontSize: 11, color: '#6b7280' }}>(Premium only)</span>}
-          </div>
-
           {/* Day Tabs */}
           <div style={{
             display: 'flex',
@@ -1461,8 +1383,7 @@ export default function DailyCheck() {
             font-size: 18px !important;
           }
         }
-      `}</style>
+      `}`}</style>
     </div>
   );
 }
-    
