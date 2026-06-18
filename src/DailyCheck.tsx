@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
   getAuth,
@@ -8,7 +8,6 @@ import {
   onAuthStateChanged,
   User
 } from 'firebase/auth';
-import * as OneSignal from 'onesignal-web-sdk';
 
 // Firebase Configuration (user should replace with their own config)
 const firebaseConfig = {
@@ -19,9 +18,6 @@ const firebaseConfig = {
   messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "YOUR_SENDER_ID",
   appId: import.meta.env.VITE_FIREBASE_APP_ID || "YOUR_APP_ID"
 };
-
-// OneSignal App ID (user should replace with their own)
-const oneSignalAppId = import.meta.env.VITE_ONESIGNAL_APP_ID || "YOUR_ONESIGNAL_APP_ID";
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -435,7 +431,7 @@ export default function DailyCheck() {
   const [newActivityName, setNewActivityName] = useState('');
   const [newActivityTime, setNewActivityTime] = useState('');
   const [notification, setNotification] = useState<string | null>(null);
-  const [oneSignalInitialized, setOneSignalInitialized] = useState(false);
+  const [browserNotificationsEnabled, setBrowserNotificationsEnabled] = useState(false);
 
   // ===== LOCATION SHARING =====
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
@@ -456,23 +452,17 @@ export default function DailyCheck() {
     });
   }, []);
 
-  // Initialize OneSignal
+  // Initialize notifications state
   useEffect(() => {
-    if (oneSignalAppId && oneSignalAppId !== 'YOUR_ONESIGNAL_APP_ID') {
+    const saved = localStorage.getItem('imfine_user_data');
+    if (saved) {
       try {
-        OneSignal.init({
-          appId: oneSignalAppId,
-          notifyButton: {
-            enable: true,
-          },
-        }).then(() => {
-          setOneSignalInitialized(true);
-          console.log('OneSignal initialized successfully');
-        }).catch((error) => {
-          console.error('OneSignal initialization failed:', error);
-        });
-      } catch (error) {
-        console.warn('OneSignal not available:', error);
+        const parsed = JSON.parse(saved);
+        if (parsed.notificationsEnabled) {
+          setBrowserNotificationsEnabled(true);
+        }
+      } catch (e) {
+        // ignore
       }
     }
   }, []);
@@ -526,22 +516,12 @@ export default function DailyCheck() {
 
   // Enable push notifications
   const handleEnableNotifications = async () => {
-    if (oneSignalInitialized) {
-      try {
-        await OneSignal.Notifications.requestPermission();
+    if ('Notification' in window) {
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
         updateUserData({ notificationsEnabled: true });
+        setBrowserNotificationsEnabled(true);
         showNotification(t.notificationsEnabled);
-      } catch (error) {
-        console.error('Notification permission error:', error);
-      }
-    } else {
-      // Fallback to browser notifications
-      if ('Notification' in window) {
-        const permission = await Notification.requestPermission();
-        if (permission === 'granted') {
-          updateUserData({ notificationsEnabled: true });
-          showNotification(t.notificationsEnabled);
-        }
       }
     }
   };
@@ -604,7 +584,7 @@ export default function DailyCheck() {
       showNotification(t.checkInSent);
       showBrowserNotification(t.appName, t.checkInSent + ' ' + locationText);
 
-      // In production, this would trigger push notifications to contacts via OneSignal
+      // In production, this would trigger push notifications to contacts
       if (isOnline) {
         console.log('Sending check-in notification to contacts:', contacts);
         console.log('Location:', locationText);
