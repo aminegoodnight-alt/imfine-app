@@ -40,7 +40,6 @@ const translations: Record<string, Record<string, string>> = {
     save: "Save",
     delete: "Delete",
     upgradePremium: "Upgrade to Premium",
-    alreadyPaid: "Already paid? Activate Premium",
     premiumFeature: "Premium Feature",
     premiumMessage: "Upgrade to add up to 3 emergency contacts",
     sportsTracker: "Sports Tracker",
@@ -70,7 +69,10 @@ const translations: Record<string, Record<string, string>> = {
     notificationsEnabled: "Notifications enabled",
     enableNotifications: "Enable Notifications",
     notifications: "Notifications",
-    dataSaved: "Data saved locally"
+    dataSaved: "Data saved locally",
+    locationEnabled: "Location sharing enabled",
+    locationDisabled: "Location sharing disabled",
+    shareLocation: "Share location on emergency"
   },
   ar: {
     appName: "أنا بخير",
@@ -82,7 +84,6 @@ const translations: Record<string, Record<string, string>> = {
     save: "حفظ",
     delete: "حذف",
     upgradePremium: "الترقية إلى المميز",
-    alreadyPaid: "دفعت بالفعل؟ تفعيل المميز",
     premiumFeature: "ميزة مميزة",
     premiumMessage: "قم بالترقية لإضافة ما يصل إلى 3 جهات اتصال للطوارئ",
     sportsTracker: "متتبع الرياضة",
@@ -112,7 +113,10 @@ const translations: Record<string, Record<string, string>> = {
     notificationsEnabled: "تم تفعيل الإشعارات",
     enableNotifications: "تفعيل الإشعارات",
     notifications: "الإشعارات",
-    dataSaved: "تم حفظ البيانات محليًا"
+    dataSaved: "تم حفظ البيانات محليًا",
+    locationEnabled: "مشاركة الموقع مفعلة",
+    locationDisabled: "مشاركة الموقع معطلة",
+    shareLocation: "مشاركة الموقع في حالات الطوارئ"
   },
   fr: {
     appName: "Je vais bien",
@@ -124,7 +128,6 @@ const translations: Record<string, Record<string, string>> = {
     save: "Enregistrer",
     delete: "Supprimer",
     upgradePremium: "Passer à Premium",
-    alreadyPaid: "Déjà payé? Activer Premium",
     premiumFeature: "Fonctionnalité Premium",
     premiumMessage: "Passez à Premium pour ajouter jusqu'à 3 contacts d'urgence",
     sportsTracker: "Suivi sportif",
@@ -154,7 +157,10 @@ const translations: Record<string, Record<string, string>> = {
     notificationsEnabled: "Notifications activées",
     enableNotifications: "Activer les notifications",
     notifications: "Notifications",
-    dataSaved: "Données enregistrées localement"
+    dataSaved: "Données enregistrées localement",
+    locationEnabled: "Partage de localisation activé",
+    locationDisabled: "Partage de localisation désactivé",
+    shareLocation: "Partager la localisation en cas d'urgence"
   },
   es: {
     appName: "Estoy bien",
@@ -166,7 +172,6 @@ const translations: Record<string, Record<string, string>> = {
     save: "Guardar",
     delete: "Eliminar",
     upgradePremium: "Actualizar a Premium",
-    alreadyPaid: "¿Ya pagaste? Activar Premium",
     premiumFeature: "Función Premium",
     premiumMessage: "Actualiza para agregar hasta 3 contactos de emergencia",
     sportsTracker: "Seguimiento deportivo",
@@ -196,7 +201,10 @@ const translations: Record<string, Record<string, string>> = {
     notificationsEnabled: "Notificaciones activadas",
     enableNotifications: "Activar notificaciones",
     notifications: "Notificaciones",
-    dataSaved: "Datos guardados localmente"
+    dataSaved: "Datos guardados localmente",
+    locationEnabled: "Compartir ubicación activado",
+    locationDisabled: "Compartir ubicación desactivado",
+    shareLocation: "Compartir ubicación en emergencia"
   },
   it: {
     appName: "Sto bene",
@@ -208,7 +216,6 @@ const translations: Record<string, Record<string, string>> = {
     save: "Salva",
     delete: "Elimina",
     upgradePremium: "Passa a Premium",
-    alreadyPaid: "Già pagato? Attiva Premium",
     premiumFeature: "Funzionalità Premium",
     premiumMessage: "Passa a Premium per aggiungere fino a 3 contatti di emergenza",
     sportsTracker: "Tracciatore sportivo",
@@ -238,7 +245,10 @@ const translations: Record<string, Record<string, string>> = {
     notificationsEnabled: "Notifiche attivate",
     enableNotifications: "Attiva notifiche",
     notifications: "Notifiche",
-    dataSaved: "Dati salvati localmente"
+    dataSaved: "Dati salvati localmente",
+    locationEnabled: "Condivisione posizione attivata",
+    locationDisabled: "Condivisione posizione disattivata",
+    shareLocation: "Condividi posizione in emergenza"
   },
   zh: {
     appName: "我很好",
@@ -250,7 +260,6 @@ const translations: Record<string, Record<string, string>> = {
     save: "保存",
     delete: "删除",
     upgradePremium: "升级到高级版",
-    alreadyPaid: "已付款？激活高级版",
     premiumFeature: "高级功能",
     premiumMessage: "升级后可添加最多3个紧急联系人",
     sportsTracker: "运动追踪器",
@@ -280,7 +289,10 @@ const translations: Record<string, Record<string, string>> = {
     notificationsEnabled: "通知已启用",
     enableNotifications: "启用通知",
     notifications: "通知",
-    dataSaved: "数据已本地保存"
+    dataSaved: "数据已本地保存",
+    locationEnabled: "位置共享已启用",
+    locationDisabled: "位置共享已禁用",
+    shareLocation: "紧急情况下分享位置"
   },
   ru: {
     appName: "Я в порядке",
@@ -292,7 +304,6 @@ const translations: Record<string, Record<string, string>> = {
     save: "Сохранить",
     delete: "Удалить",
     upgradePremium: "Обновить до Premium",
-    alreadyPaid: "Уже оплатили? Активировать Premium",
     premiumFeature: "Премиум функция",
     premiumMessage: "Обновите до Premium, чтобы добавить до 3 экстренных контактов",
     sportsTracker: "Трекер спорта",
@@ -322,7 +333,10 @@ const translations: Record<string, Record<string, string>> = {
     notificationsEnabled: "Уведомления включены",
     enableNotifications: "Включить уведомления",
     notifications: "Уведомления",
-    dataSaved: "Данные сохранены локально"
+    dataSaved: "Данные сохранены локально",
+    locationEnabled: "Обмен местоположением включен",
+    locationDisabled: "Обмен местоположением отключен",
+    shareLocation: "Поделиться местоположением в экстренной ситуации"
   }
 };
 
@@ -349,6 +363,7 @@ interface UserData {
   lastCheckIn: string | null;
   language: string;
   notificationsEnabled: boolean;
+  shareLocation: boolean;
 }
 
 const LANGUAGES = [
@@ -370,7 +385,12 @@ function loadUserData(): UserData {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
-      return JSON.parse(saved);
+      const parsed = JSON.parse(saved);
+      // Backward compatibility: if shareLocation was missing from old data, default to false
+      if (typeof parsed.shareLocation !== 'boolean') {
+        parsed.shareLocation = false;
+      }
+      return parsed;
     }
   } catch (e) {
     console.error('Failed to load user data from localStorage:', e);
@@ -387,7 +407,8 @@ function loadUserData(): UserData {
     isPremium: false,
     lastCheckIn: null,
     language: 'en',
-    notificationsEnabled: false
+    notificationsEnabled: false,
+    shareLocation: false
   };
 }
 
@@ -418,10 +439,9 @@ export default function DailyCheck() {
 
   // ===== LOCATION SHARING =====
   const [userLocation, setUserLocation] = useState<{ lat: number; lng: number } | null>(null);
-  const [shareLocation, setShareLocation] = useState(false);
 
   // Destructure userData for convenience
-  const { contacts, schedule, isPremium, lastCheckIn, language, notificationsEnabled } = userData;
+  const { contacts, schedule, isPremium, lastCheckIn, language, notificationsEnabled, shareLocation } = userData;
 
   const t = translations[language];
   const maxContacts = isPremium ? 3 : 1;
@@ -449,7 +469,7 @@ export default function DailyCheck() {
           setOneSignalInitialized(true);
           console.log('OneSignal initialized successfully');
         }).catch((error) => {
-          console.error('One initialization failed:', error);
+          console.error('OneSignal initialization failed:', error);
         });
       } catch (error) {
         console.warn('OneSignal not available:', error);
@@ -527,36 +547,40 @@ export default function DailyCheck() {
   };
 
   // ===== LOCATION SHARING FUNCTIONS =====
-  const getLocation = useCallback(() => {
-    if (!isPremium) {
-      showNotification('🔒 Premium feature only');
-      return;
-    }
-    if (!navigator.geolocation) {
-      showNotification('⚠️ Geolocation not supported');
-      return;
-    }
-    navigator.geolocation.getCurrentPosition(
-      (pos) => {
-        setUserLocation({
-          lat: pos.coords.latitude,
-          lng: pos.coords.longitude
-        });
-        showNotification('📍 Location acquired');
-      },
-      () => {
-        setUserLocation(null);
-        showNotification('⚠️ Could not get location');
+  // Get location as a promise for use in async flows
+  const fetchLocation = useCallback((): Promise<{ lat: number; lng: number } | null> => {
+    return new Promise((resolve) => {
+      if (!isPremium) {
+        resolve(null);
+        return;
       }
-    );
-  }, [isPremium]);
+      if (!navigator.geolocation) {
+        showNotification('⚠️ Geolocation not supported');
+        resolve(null);
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          const loc = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          setUserLocation(loc);
+          showNotification('📍 Location acquired');
+          resolve(loc);
+        },
+        () => {
+          setUserLocation(null);
+          showNotification('⚠️ Could not get location');
+          resolve(null);
+        }
+      );
+    });
+  }, [isPremium, showNotification]);
 
-  const getLocationText = useCallback(() => {
-    if (!isPremium || !shareLocation || !userLocation) {
+  const getLocationText = useCallback((location: { lat: number; lng: number } | null) => {
+    if (!isPremium || !shareLocation || !location) {
       return "Location unknown. Please contact the user directly.";
     }
-    return `📍 Last known location: https://maps.google.com/?q=${userLocation.lat},${userLocation.lng}`;
-  }, [isPremium, shareLocation, userLocation]);
+    return `📍 Last known location: https://maps.google.com/?q=${location.lat},${location.lng}`;
+  }, [isPremium, shareLocation]);
 
   // Show browser notification
   const showBrowserNotification = useCallback((title: string, body: string) => {
@@ -569,13 +593,14 @@ export default function DailyCheck() {
     const now = new Date().toISOString();
     updateUserData({ lastCheckIn: now });
 
-    // إرسال الموقع مع التنبيه إذا كان المستخدم مشتركاً
+    // Get location for the alert if enabled and premium
+    let currentLocation = null;
     if (isPremium && shareLocation) {
-      getLocation();
+      currentLocation = await fetchLocation();
     }
 
     if (contacts.length > 0) {
-      const locationText = getLocationText();
+      const locationText = getLocationText(currentLocation);
       showNotification(t.checkInSent);
       showBrowserNotification(t.appName, t.checkInSent + ' ' + locationText);
 
@@ -640,10 +665,19 @@ export default function DailyCheck() {
     });
   };
 
-  const handleActivatePremium = () => {
-    updateUserData({ isPremium: true });
-    setShowUpgradeModal(false);
-    showNotification('Premium activated!');
+  const handleToggleLocation = async () => {
+    if (!isPremium) {
+      showNotification('🔒 Premium feature only');
+      return;
+    }
+    const newValue = !shareLocation;
+    updateUserData({ shareLocation: newValue });
+    if (newValue) {
+      await fetchLocation();
+    } else {
+      setUserLocation(null);
+    }
+    showNotification(newValue ? t.locationEnabled : t.locationDisabled);
   };
 
   const formatLastCheckIn = (dateStr: string | null) => {
@@ -996,7 +1030,9 @@ export default function DailyCheck() {
               onClick={() => {
                 if (contacts.length >= maxContacts && !isPremium) {
                   setShowUpgradeModal(true);
-                } else if (contacts.length < maxContacts) {
+                } else if (contacts.length >= maxContacts) {
+                  // Should not happen since maxContacts is 3 for premium
+                } else {
                   setShowAddContact(true);
                 }
               }}
@@ -1085,7 +1121,7 @@ export default function DailyCheck() {
           )}
         </div>
 
-        {/* Sports Tracker */}
+        {/* Settings / Sports Tracker */}
         <div style={{
           background: 'rgba(255,255,255,0.95)',
           borderRadius: '15px',
@@ -1101,40 +1137,40 @@ export default function DailyCheck() {
             {t.sportsTracker}
           </h2>
 
-          {/* Location Sharing Toggle */}
+          {/* Location Sharing Toggle — Premium only */}
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 12, marginBottom: 16 }}>
-            <span style={{ fontSize: 13, color: '#374151' }}>📍 Share location on emergency</span>
-            <div 
-              onClick={() => {
-                if (isPremium) {
-                  setShareLocation(!shareLocation);
-                  if (!shareLocation) getLocation();
-                } else {
-                  showNotification('🔒 Premium feature only');
-                }
-              }}
-              style={{ 
-                width: 46, 
-                height: 26, 
-                borderRadius: 13, 
-                background: (isPremium && shareLocation) ? '#ea580c' : '#d1d5db', 
+            <span style={{ fontSize: '13px', color: '#374151' }}>
+              📍 {t.shareLocation}
+            </span>
+            <div
+              onClick={handleToggleLocation}
+              style={{
+                width: 46,
+                height: 26,
+                borderRadius: 13,
+                background: (isPremium && shareLocation) ? '#ea580c' : '#d1d5db',
                 cursor: isPremium ? 'pointer' : 'not-allowed',
-                position: 'relative', 
-                transition: 'background 0.2s' 
+                position: 'relative',
+                transition: 'background 0.2s'
               }}
             >
-              <div style={{ 
-                position: 'absolute', 
-                top: 3, 
-                left: (isPremium && shareLocation) ? 22 : 3, 
-                width: 20, 
-                height: 20, 
-                borderRadius: '50%', 
-                background: 'white', 
-                transition: 'left 0.2s' 
+              <div style={{
+                position: 'absolute',
+                top: 3,
+                left: (isPremium && shareLocation) ? 22 : 3,
+                width: 20,
+                height: 20,
+                borderRadius: '50%',
+                background: 'white',
+                transition: 'left 0.2s'
               }} />
             </div>
-            {!isPremium && <span style={{ fontSize: 11, color: '#6b7280' }}>(Premium only)</span>}
+            {!isPremium && <span style={{ fontSize: '11px', color: '#6b7280' }}>(Premium only)</span>}
+            {isPremium && shareLocation && userLocation && (
+              <span style={{ fontSize: '11px', color: '#6b7280' }}>
+                {userLocation.lat.toFixed(4)}, {userLocation.lng.toFixed(4)}
+              </span>
+            )}
           </div>
 
           {/* Day Tabs */}
@@ -1356,26 +1392,6 @@ export default function DailyCheck() {
               {t.upgradePremium}
             </a>
 
-            {/* Already Paid Button */}
-            <button
-              onClick={handleActivatePremium}
-              style={{
-                display: 'block',
-                width: '100%',
-                background: 'transparent',
-                border: '2px solid #38ef7d',
-                color: '#38ef7d',
-                padding: '14px 32px',
-                borderRadius: '25px',
-                fontWeight: 600,
-                fontSize: '16px',
-                cursor: 'pointer',
-                marginBottom: '20px'
-              }}
-            >
-              {t.alreadyPaid}
-            </button>
-
             <button
               onClick={() => setShowUpgradeModal(false)}
               style={{
@@ -1465,14 +1481,3 @@ export default function DailyCheck() {
     </div>
   );
 }
-  
-    
-  
-      
-          
-                
-          
-                  
-          
-            
-        
