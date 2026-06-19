@@ -837,6 +837,7 @@ function sendOneSignalAlert(title: string, message: string) {
 }
 
 // ============ COMPONENT ============
+// Build: v2.1
 export default function DailyCheck() {
   const [userData, setUserData] = useState<UserData>(() => loadUserData());
   const [user, setUser] = useState<User | null>(null);
@@ -1096,7 +1097,7 @@ export default function DailyCheck() {
     background: '#ffffff',
     borderRadius: '16px',
     padding: '24px',
-    boxShadow: '0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05)',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)',
     border: '1px solid #e5e7eb',
   };
   const titleStyle = {
