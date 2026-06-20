@@ -793,7 +793,7 @@ async function sendEmailAlert(contact: Contact, message: string, location?: stri
     });
     return response.ok;
   } catch (e) {
-    console.error('EmailJS error:', e);
+    alert('Error: ' + EMAILJS_SERVICE_ID + ' / ' + EMAILJS_PUBLIC_KEY);
     return false;
   }
 }
