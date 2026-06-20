@@ -770,7 +770,7 @@ function saveUserData(data: UserData): void {
 }
 
 // ============ EMAILJS ============
-async function sendEmailAlert(contact: Contact, message: string, location?: string): Promise<boolean> { alert('Keys: ' + EMAILJS_SERVICE_ID + ' / ' + EMAILJS_PUBLIC_KEY);
+async function sendEmailAlert(contact: Contact, message: string, location?: string): Promise<boolean> { 
   if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
     console.warn('EmailJS not configured');
     return false;
@@ -792,10 +792,10 @@ async function sendEmailAlert(contact: Contact, message: string, location?: stri
       })
     });
     const result = await response.json();
-alert('Result: ' + JSON.stringify(result));
+alert('Error: ' + EMAILJS_SERVICE_ID + ' / ' + EMAILJS_PUBLIC_KEY);
 return response.ok;
   } catch (e) {
-    alert('Error: ' + EMAILJS_SERVICE_ID + ' / ' + EMAILJS_PUBLIC_KEY);
+    console.error('EmailJS error:', e);
     return false;
   }
 }
