@@ -1247,7 +1247,7 @@ export default function DailyCheck() {
                   <div style={{ fontWeight: 600, color: '#111827', fontSize: '14px' }}>📧 {t.emailAlert}</div>
                   <div style={{ fontSize: '12px', color: '#6b7280' }}>{""}</div>
                 </div>
-                <div onClick={handleToggleEmailAlerts} style={{ width: 48, height: 26, borderRadius: 13, background: emailAlertsEnabled ? '#16a34a' : '#d1d5db', cursor:  'pointer' : , position: 'relative', transition: 'background 0.2s', flexShrink: 0 }}>
+                <div onClick={handleToggleEmailAlerts} style={{ width: 48, height: 26, borderRadius: 13, background: emailAlertsEnabled ? '#16a34a' : '#d1d5db', cursor: 'pointer' , position: 'relative', transition: 'background 0.2s', flexShrink: 0 }}>
                   <div style={{ position: 'absolute', top: 3, left:  emailAlertsEnabled ? 24 : 3, width: 20, height: 20, borderRadius: '50%', background: 'white', transition: 'left 0.2s' }} />
                 </div>
               </div>
