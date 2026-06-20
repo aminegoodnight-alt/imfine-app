@@ -769,33 +769,37 @@ function saveUserData(data: UserData): void {
   }
 }
 
-// ============ RESEND ============
+// ============ EMAILJS ============
 async function sendEmailAlert(contact: Contact, message: string, location?: string): Promise<boolean> {
-  const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY || '';
-  if (!RESEND_API_KEY) {
-    console.warn('Resend not configured');
+  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID || '';
+  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || '';
+  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || '';
+  if (!SERVICE_ID || !TEMPLATE_ID || !PUBLIC_KEY) {
+    console.warn('EmailJS not configured');
     return false;
   }
   try {
-    const response = await fetch('https://api.resend.com/emails', {
+    const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${RESEND_API_KEY}`,
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        from: "I'm Fine App <onboarding@resend.dev>",
-        to: contact.email,
-        subject: "🚨 Emergency Alert from I'm Fine",
-        html: `<div style="font-family:Arial,sans-serif;background:#fff3f3;padding:20px;border-radius:8px;border-left:5px solid #dc2626;"><h2 style="color:#dc2626;">🚨 EMERGENCY ALERT 🚨</h2><p>Dear <strong>${contact.name}</strong>,</p><p style="background:#fee2e2;padding:12px;border-radius:6px;">⚠️ <strong>${message}</strong></p><p>📍 Location: ${location}</p><p style="color:#dc2626;font-weight:bold;">⏰ Please respond IMMEDIATELY!</p><p>— I'm Fine App</p></div>`,
-      }),
+        service_id: SERVICE_ID,
+        template_id: TEMPLATE_ID,
+        user_id: PUBLIC_KEY,
+        template_params: {
+          to_name: contact.name,
+          to_email: contact.email,
+          message: message,
+          location: location || '',
+        }
+      })
     });
     return response.ok;
   } catch (e) {
-    console.error('Resend error:', e);
+    console.error('EmailJS error:', e);
     return false;
   }
-  }
+}
   
 
 
