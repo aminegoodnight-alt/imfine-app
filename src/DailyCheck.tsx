@@ -769,6 +769,7 @@ function saveUserData(data: UserData): void {
   }
 }
 
+// ============ RESEND ============
 async function sendEmailAlert(contact: Contact, message: string, location?: string): Promise<boolean> {
   const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY || '';
   if (!RESEND_API_KEY) {
@@ -783,19 +784,10 @@ async function sendEmailAlert(contact: Contact, message: string, location?: stri
         'Authorization': `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'I\'m Fine App <onboarding@resend.dev>',
+        from: "I'm Fine App <onboarding@resend.dev>",
         to: contact.email,
-        subject: '🚨 Emergency Alert from I\'m Fine',
-        html: `
-          <div style="font-family:Arial,sans-serif;background:#fff3f3;padding:20px;border-radius:8px;border-left:5px solid #dc2626;">
-            <h2 style="color:#dc2626;">🚨 EMERGENCY ALERT 🚨</h2>
-            <p>Dear <strong>${contact.name}</strong>,</p>
-            <p style="background:#fee2e2;padding:12px;border-radius:6px;">⚠️ <strong>${message}</strong></p>
-            <p>📍 Location: <a href="${location}">${location}</a></p>
-            <p style="color:#dc2626;font-weight:bold;">⏰ Please respond IMMEDIATELY!</p>
-            <p>— I'm Fine App</p>
-          </div>
-        `,
+        subject: "🚨 Emergency Alert from I'm Fine",
+        html: `<div style="font-family:Arial,sans-serif;background:#fff3f3;padding:20px;border-radius:8px;border-left:5px solid #dc2626;"><h2 style="color:#dc2626;">🚨 EMERGENCY ALERT 🚨</h2><p>Dear <strong>${contact.name}</strong>,</p><p style="background:#fee2e2;padding:12px;border-radius:6px;">⚠️ <strong>${message}</strong></p><p>📍 Location: ${location}</p><p style="color:#dc2626;font-weight:bold;">⏰ Please respond IMMEDIATELY!</p><p>— I'm Fine App</p></div>`,
       }),
     });
     return response.ok;
@@ -803,8 +795,10 @@ async function sendEmailAlert(contact: Contact, message: string, location?: stri
     console.error('Resend error:', e);
     return false;
   }
-}
-}
+
+  
+
+
 
 // ============ ONESIGNAL ============
 function initOneSignal() {
