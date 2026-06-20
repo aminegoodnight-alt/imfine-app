@@ -770,7 +770,7 @@ function saveUserData(data: UserData): void {
 }
 
 // ============ EMAILJS ============
-async function sendEmailAlert(contact: Contact, message: string, location?: string): Promise<boolean> {
+async function sendEmailAlert(contact: Contact, message: string, location?: string): Promise<boolean> { alert('Keys: ' + EMAILJS_SERVICE_ID + ' / ' + EMAILJS_PUBLIC_KEY);
   if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
     console.warn('EmailJS not configured');
     return false;
