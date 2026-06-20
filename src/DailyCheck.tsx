@@ -1000,7 +1000,7 @@ export default function DailyCheck() {
     showNotification(t.alertSent);
     showBrowserNotification(`🚨 ${t.emergency}`, `${t.alertSent} ${locationText}`);
     sendOneSignalAlert(`🚨 ${t.emergency}`, `${t.alertSent} ${locationText}`);
-    if (emailAlertsEnabled && contacts.length > 0) {
+    if (contacts.length > 0) {
       for (const c of contacts) {
         if (c.email) {
           await sendEmailAlert(c, `🚨 ${t.emergency}: ${t.alertSent}`, locationText);
