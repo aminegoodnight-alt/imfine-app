@@ -795,7 +795,7 @@ async function sendEmailAlert(contact: Contact, message: string, location?: stri
     console.error('Resend error:', e);
     return false;
   }
-
+  }
   
 
 
