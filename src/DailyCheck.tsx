@@ -1004,8 +1004,10 @@ export default function DailyCheck() {
     sendOneSignalAlert(`🚨 ${t.emergency}`, `${t.alertSent} ${locationText}`);
     if (contacts.length > 0) {
       for (const c of contacts) {
+        console.log('Trying email for:', c.name, c.email);
         if (c.email) {
-          await sendEmailAlert(c, `🚨 ${t.emergency}: ${t.alertSent}`, locationText);
+          const result = await sendEmailAlert(c, `🚨 ${t.emergency}: ${t.alertSent}`, locationText);
+          console.log('Email result:', result);
         }
       }
     }
