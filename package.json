@@ -41,6 +41,8 @@
     "lucide-react": "^0.363.0",
     "tailwind-merge": "^2.2.1",
     "tailwindcss-animate": "^1.0.7",
+    "tw-animate-css": "^1.0.0",
+    "@tailwindcss/typography": "^0.5.10",
     "recharts": "^2.12.2",
     "sonner": "^1.4.3",
     "cmdk": "^0.2.1",
@@ -50,9 +52,7 @@
     "react-day-picker": "^8.10.0",
     "date-fns": "^3.3.1",
     "embla-carousel-react": "^8.0.0",
-    "react-resizable-panels": "^2.0.12",
-    "tw-animate-css": "^1.0.0",
-"@tailwindcss/typography": "^0.5.10",
+    "react-resizable-panels": "^2.0.12"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
@@ -61,6 +61,6 @@
     "@tailwindcss/vite": "^4.0.0",
     "typescript": "^5.3.3",
     "vite": "^5.0.10",
-    "tailwindcss": "^4.0.0",
+    "tailwindcss": "^4.0.0"
   }
 }
