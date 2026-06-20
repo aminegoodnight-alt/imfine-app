@@ -769,35 +769,41 @@ function saveUserData(data: UserData): void {
   }
 }
 
-// ============ EMAILJS ============
-async function sendEmailAlert(contact: Contact, message: string, location?: string): Promise<boolean> { 
-  if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
-    console.warn('EmailJS not configured');
+async function sendEmailAlert(contact: Contact, message: string, location?: string): Promise<boolean> {
+  const RESEND_API_KEY = import.meta.env.VITE_RESEND_API_KEY || '';
+  if (!RESEND_API_KEY) {
+    console.warn('Resend not configured');
     return false;
   }
   try {
-    const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+    const response = await fetch('https://api.resend.com/emails', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${RESEND_API_KEY}`,
+      },
       body: JSON.stringify({
-        service_id: EMAILJS_SERVICE_ID,
-        template_id: EMAILJS_TEMPLATE_ID,
-        user_id: EMAILJS_PUBLIC_KEY,
-        template_params: {
-          to_name: contact.name,
-          to_email: contact.email || contact.phone,
-          message: message,
-          location: location || '',
-        }
-      })
+        from: 'I\'m Fine App <onboarding@resend.dev>',
+        to: contact.email,
+        subject: '🚨 Emergency Alert from I\'m Fine',
+        html: `
+          <div style="font-family:Arial,sans-serif;background:#fff3f3;padding:20px;border-radius:8px;border-left:5px solid #dc2626;">
+            <h2 style="color:#dc2626;">🚨 EMERGENCY ALERT 🚨</h2>
+            <p>Dear <strong>${contact.name}</strong>,</p>
+            <p style="background:#fee2e2;padding:12px;border-radius:6px;">⚠️ <strong>${message}</strong></p>
+            <p>📍 Location: <a href="${location}">${location}</a></p>
+            <p style="color:#dc2626;font-weight:bold;">⏰ Please respond IMMEDIATELY!</p>
+            <p>— I'm Fine App</p>
+          </div>
+        `,
+      }),
     });
-    const result = await response.json();
-alert('Error: ' + EMAILJS_SERVICE_ID + ' / ' + EMAILJS_PUBLIC_KEY);
-return response.ok;
+    return response.ok;
   } catch (e) {
-    console.error('EmailJS error:', e);
+    console.error('Resend error:', e);
     return false;
   }
+}
 }
 
 // ============ ONESIGNAL ============
