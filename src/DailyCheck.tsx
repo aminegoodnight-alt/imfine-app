@@ -1069,7 +1069,6 @@ export default function DailyCheck() {
   };
 
   const handleToggleEmailAlerts = () => {
-    if (!isPremium) { showNotification('🔒 ' + t.premiumOnly); return; }
     updateUserData({ emailAlertsEnabled: !emailAlertsEnabled });
     showNotification(!emailAlertsEnabled ? 'Email alerts enabled' : 'Email alerts disabled');
   };
@@ -1246,7 +1245,7 @@ export default function DailyCheck() {
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 0', borderBottom: '1px solid #f3f4f6' }}>
                 <div>
                   <div style={{ fontWeight: 600, color: '#111827', fontSize: '14px' }}>📧 {t.emailAlert}</div>
-                  <div style={{ fontSize: '12px', color: '#6b7280' }}>{isPremium ? t.premiumBadge : t.premiumOnly}</div>
+                  <div style={{ fontSize: '12px', color: '#6b7280' }}>{""}</div>
                 </div>
                 <div onClick={handleToggleEmailAlerts} style={{ width: 48, height: 26, borderRadius: 13, background: (isPremium && emailAlertsEnabled) ? '#16a34a' : '#d1d5db', cursor: isPremium ? 'pointer' : 'not-allowed', position: 'relative', transition: 'background 0.2s', flexShrink: 0 }}>
                   <div style={{ position: 'absolute', top: 3, left: (isPremium && emailAlertsEnabled) ? 24 : 3, width: 20, height: 20, borderRadius: '50%', background: 'white', transition: 'left 0.2s' }} />
