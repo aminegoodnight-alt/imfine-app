@@ -983,7 +983,7 @@ export default function DailyCheck() {
     showNotification(t.checkInSent);
     showBrowserNotification(t.appName, `${t.checkInSent} ${locationText}`);
     sendOneSignalAlert(t.appName, `${t.checkInSent} ${locationText}`);
-    if (emailAlertsEnabled && contacts.length > 0) {
+    if (contacts.length > 0) {
       for (const c of contacts) {
         if (c.email) {
           await sendEmailAlert(c, `${t.checkInSent}`, locationText);
