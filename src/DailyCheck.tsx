@@ -791,7 +791,9 @@ async function sendEmailAlert(contact: Contact, message: string, location?: stri
         }
       })
     });
-    return response.ok;
+    const result = await response.json();
+alert('Result: ' + JSON.stringify(result));
+return response.ok;
   } catch (e) {
     alert('Error: ' + EMAILJS_SERVICE_ID + ' / ' + EMAILJS_PUBLIC_KEY);
     return false;
