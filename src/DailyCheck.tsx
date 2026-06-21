@@ -1,3 +1,4 @@
+import { createClient } from '@supabase/supabase-js';
 import { useState, useEffect, useCallback } from 'react';
 import { initializeApp } from 'firebase/app';
 import {
@@ -887,12 +888,24 @@ export default function DailyCheck() {
 
   // Firebase Auth
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-      setUser(firebaseUser);
-      setAuthLoading(false);
-    });
-    return () => unsubscribe();
-  }, []);
+  const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+    setUser(firebaseUser);
+    if (firebaseUser?.email) {
+      const supabase = createClient(
+        import.meta.env.VITE_SUPABASE_URL || '',
+        import.meta.env.VITE_SUPABASE_ANON_KEY || ''
+      );
+      const { data } = await supabase
+        .from('premium_users')
+        .select('email')
+        .eq('email', firebaseUser.email)
+        .single();
+      if (data) updateUserData({ isPremium: true });
+    }
+    setAuthLoading(false);
+  });
+  return () => unsubscribe();
+}, []);
 
   // Network
   useEffect(() => {
