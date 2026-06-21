@@ -905,7 +905,7 @@ export default function DailyCheck() {
     setAuthLoading(false);
   });
   return () => unsubscribe();
-}, []);
+}, [updateUserData]);
 
   // Network
   useEffect(() => {
