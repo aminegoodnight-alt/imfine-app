@@ -1,0 +1,17 @@
+{
+  "name": "I'm Fine",
+  "short_name": "ImFine",
+  "description": "Personal safety check-in app",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a8c3a",
+  "theme_color": "#0a8c3a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
