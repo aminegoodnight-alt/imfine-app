@@ -54,6 +54,7 @@
     "embla-carousel-react": "^8.0.0",
     "react-resizable-panels": "^2.0.12",
     "@supabase/supabase-js": "^2.39.0"
+    "@emailjs/nodejs": "^4.0.3",
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
