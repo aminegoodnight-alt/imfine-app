@@ -992,6 +992,18 @@ export default function DailyCheck() {
   const handleImFine = async () => {
     const now = new Date().toISOString();
     updateUserData({ lastCheckIn: now });
+    if (user?.email) {
+  const supabase = createClient(
+    import.meta.env.VITE_SUPABASE_URL || '',
+    import.meta.env.VITE_SUPABASE_ANON_KEY || ''
+  );
+  await supabase.from('user_checkins').upsert({
+    email: user.email,
+    name: user.displayName || '',
+    last_checkin: now,
+    contacts: contacts
+  }, { onConflict: 'email' });
+}
     let currentLocation = null;
     if (isPremium && shareLocation) {
       currentLocation = await fetchLocation();
