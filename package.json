@@ -1,4 +1,4 @@
-{
+
   "name": "imfine-app",
   "version": "1.0.0",
   "type": "module",
@@ -65,4 +65,4 @@
     "vite": "^5.0.10",
     "tailwindcss": "^4.0.0"
   }
-}
+  }
