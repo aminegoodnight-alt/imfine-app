@@ -892,8 +892,8 @@ export default function DailyCheck() {
     setUser(firebaseUser);
     if (firebaseUser?.email) {
       const supabase = createClient(
-        import.meta.env.VITE_SUPABASE_URL || '',
-        import.meta.env.VITE_SUPABASE_ANON_KEY || ''
+        'https://fsthnmjzccfbvyhrwluf.supabase.co',
+'sb_publishable_Rm0_i6i9XSO08lK9cyBXWw_hBmz6jl4'
       );
       const { data } = await supabase
         .from('premium_users')
@@ -994,8 +994,8 @@ export default function DailyCheck() {
     updateUserData({ lastCheckIn: now });
     if (user?.email) {
   const supabase = createClient(
-    import.meta.env.VITE_SUPABASE_URL || '',
-    import.meta.env.VITE_SUPABASE_ANON_KEY || ''
+   'https://fsthnmjzccfbvyhrwluf.supabase.co',
+'sb_publishable_Rm0_i6i9XSO08lK9cyBXWw_hBmz6jl4'
   );
   await supabase.from('user_checkins').upsert({
     email: user.email,
