@@ -952,19 +952,21 @@ export default function DailyCheck() {
 
   const handleEnableNotifications = async () => {
     if (!('Notification' in window)) return;
+    const confirmed = window.confirm('Do you want to enable notifications for I\'m Fine?');
+    if (!confirmed) return;
     if (Notification.permission === 'granted') {
       updateUserData({ notificationsEnabled: true });
       setBrowserNotifEnabled(true);
       showNotification(t.notificationsEnabled);
-      return;
-    }
-    const confirmed = window.confirm('Do you want to enable notifications for I\'m Fine?');
-    if (!confirmed) return;
-    const permission = await Notification.requestPermission();
-    if (permission === 'granted') {
-      updateUserData({ notificationsEnabled: true });
-      setBrowserNotifEnabled(true);
-      showNotification(t.notificationsEnabled);
+    } else if (Notification.permission === 'denied') {
+      alert('Notifications are blocked. Please enable them in your phone settings.');
+    } else {
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
+        updateUserData({ notificationsEnabled: true });
+        setBrowserNotifEnabled(true);
+        showNotification(t.notificationsEnabled);
+      }
     }
   };
 
